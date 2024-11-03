@@ -1,16 +1,18 @@
 package com.example.granaccess
-//cambios igna (prueba) con mi rama
+
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.granaccess.ui.theme.GranAccessTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +21,60 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GranAccessTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen(
+                    onNavigateToComanda = {
+                        startActivity(Intent(this, ComandaActivity::class.java))
+                    },
+                    onNavigateToSeleccionarMaterial = {
+                        startActivity(Intent(this, SeleccionarMaterialActivity::class.java))
+                    },
+                    onNavigateToGestionarTareas = {
+                        startActivity(Intent(this, GestionTareasActivity::class.java))
+                    }
+                )
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun MainScreen(
+    onNavigateToComanda: () -> Unit,
+    onNavigateToSeleccionarMaterial: () -> Unit,
+    onNavigateToGestionarTareas: () -> Unit
+) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        content = { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(16.dp)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(text = "Bienvenido a GranAccess")
+
+                Button(onClick = onNavigateToComanda, modifier = Modifier.fillMaxWidth()) {
+                    Text("Ir a Gestión de Comandas")
+                }
+
+                Button(onClick = onNavigateToSeleccionarMaterial, modifier = Modifier.fillMaxWidth()) {
+                    Text("Seleccionar Material")
+                }
+
+                Button(onClick = onNavigateToGestionarTareas, modifier = Modifier.fillMaxWidth()) {
+                    Text("Gestionar Tareas")
+                }
+            }
+        }
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun MainScreenPreview() {
     GranAccessTheme {
-        Greeting("Android")
+        MainScreen({}, {}, {})
     }
 }

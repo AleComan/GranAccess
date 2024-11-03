@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Tarea"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título de la Tarea"
+        android:textSize="18sp"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTituloTarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribe el título de la tarea"
+        android:background="@drawable/background_edittext"
+        android:padding="8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción de la Tarea"
+        android:textSize="18sp"
+        android:paddingTop="16dp" />
+
+    <EditText
+        android:id="@+id/editDescripcionTarea"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Escribe la descripción de la tarea"
+        android:background="@drawable/background_edittext"
+        android:padding="8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pasos de la Tarea"
+        android:textSize="18sp"
+        android:paddingTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAnadirPaso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir Paso"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textPaso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paso 1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <EditText
+        android:id="@+id/editPasoContenido"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Escribe el contenido del paso"
+        android:background="@drawable/background_edittext"
+        android:padding="8dp"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnPasoAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paso anterior"
+            android:visibility="gone"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnPasoSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paso siguiente" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginTop="32dp">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:backgroundTint="@color/your_cancel_button_color"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnGuardarTarea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guardar Tarea"
+            android:backgroundTint="@color/your_confirm_button_color"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

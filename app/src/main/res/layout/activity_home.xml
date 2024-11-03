@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Botón existente para Gestión de Comandas -->
+    <Button
+        android:id="@+id/btnGestionComandas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Gestión de Comandas" />
+
+    <!-- Nuevo botón para Gestión de Tareas -->
+    <Button
+        android:id="@+id/btnGestionarTareas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gestionar Tareas"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

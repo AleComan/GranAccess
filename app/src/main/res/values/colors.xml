@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="purple_background">#D1C4E9</color> <!-- Color añadido -->
+    <color name="tu_color_de_fondo">#F3F4F6</color> <!-- Cambia a tu color de fondo preferido -->
+    <color name="tu_color_de_texto">#333333</color> <!-- Cambia a tu color de texto preferido -->
+    <color name="your_cancel_button_color">#D32F2F</color> <!-- Rojo, cambia si es necesario -->
+    <color name="your_confirm_button_color">#388E3C</color> <!-- Verde, cambia si es necesario -->
+
+    <!-- Nuevos colores añadidos -->
+    <color name="red">#D32F2F</color> <!-- Rojo -->
+    <color name="green">#388E3C</color> <!-- Verde -->
 </resources>

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.UUID
 
 class CrearTareaActivity : AppCompatActivity() {
 
@@ -28,6 +29,7 @@ class CrearTareaActivity : AppCompatActivity() {
     private var stepsContent = mutableMapOf<Int, String>()
     private var stepAdded = false
     private var isEditing = false // Flag para modo de edición
+    private var tareaId: String? = null // Identificador único de la tarea
     private var maxStep = 1
     private val tareasKey = "TAREAS_KEY"
     private val gson = Gson()
@@ -54,6 +56,7 @@ class CrearTareaActivity : AppCompatActivity() {
         if (tareaJson != null) {
             val tarea = gson.fromJson(tareaJson, Tarea::class.java)
             loadTarea(tarea)
+            tareaId = tarea.id // Asignar el ID de la tarea existente
             maxStep = stepsContent.size
         }
 
@@ -124,7 +127,8 @@ class CrearTareaActivity : AppCompatActivity() {
         val descripcion = editDescripcionTarea.text.toString()
 
         if (titulo.isNotEmpty() && descripcion.isNotEmpty()) {
-            val tarea = Tarea(titulo, descripcion, stepsContent)
+            val id = tareaId ?: UUID.randomUUID().toString() // Usar el ID existente o generar uno nuevo
+            val tarea = Tarea(id, titulo, descripcion, stepsContent)
             val sharedPreferences = getSharedPreferences("TareasPref", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
 
@@ -136,13 +140,12 @@ class CrearTareaActivity : AppCompatActivity() {
                 mutableListOf()
             }
 
-            if (isEditing) {
-                val index = listaTareas.indexOfFirst { it.titulo == tarea.titulo }
-                if (index != -1) {
-                    listaTareas[index] = tarea
-                }
+            // Remover la tarea existente con el mismo ID si se está editando
+            val index = listaTareas.indexOfFirst { it.id == id }
+            if (index != -1) {
+                listaTareas[index] = tarea // Reemplazar la tarea existente
             } else {
-                listaTareas.add(tarea)
+                listaTareas.add(tarea) // Agregar como nueva tarea si no existe
             }
 
             editor.putString(tareasKey, gson.toJson(listaTareas))

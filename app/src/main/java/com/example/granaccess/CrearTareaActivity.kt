@@ -27,14 +27,14 @@ class CrearTareaActivity : AppCompatActivity() {
     private var currentStep = 1
     private var stepsContent = mutableMapOf<Int, String>()
     private var stepAdded = false
-    private var isEditing = false // Variable para controlar si estás en modo de edición
-    private var maxStep = 1 // Controla el número máximo de pasos en el modo de edición
+    private var isEditing = false // Flag para modo de edición
+    private var maxStep = 1
     private val tareasKey = "TAREAS_KEY"
     private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_crear_tarea)
+        setContentView(R.layout.activity_tarea)
 
         // Inicializar referencias a vistas
         editTituloTarea = findViewById(R.id.editTituloTarea)
@@ -49,11 +49,12 @@ class CrearTareaActivity : AppCompatActivity() {
 
         // Verificar si se pasó una tarea para editar
         val tareaJson = intent.getStringExtra("tareaSeleccionada")
+        isEditing = intent.getBooleanExtra("isEditing", false)
+
         if (tareaJson != null) {
             val tarea = gson.fromJson(tareaJson, Tarea::class.java)
             loadTarea(tarea)
-            isEditing = true // Activar modo de edición
-            maxStep = stepsContent.size // Establecer el número máximo de pasos
+            maxStep = stepsContent.size
         }
 
         updateStepDisplay()
@@ -63,20 +64,18 @@ class CrearTareaActivity : AppCompatActivity() {
             saveCurrentStepContent()
             stepAdded = true
             currentStep++
-            maxStep = currentStep // Actualizar el número máximo de pasos cuando se agrega uno nuevo
+            maxStep = currentStep
             stepsContent[currentStep] = ""
             updateStepDisplay()
             editPasoContenido.text.clear()
         }
 
         btnPasoSiguiente.setOnClickListener {
-            if ((stepAdded || isEditing) && currentStep < maxStep) {
+            if (currentStep < maxStep) {
                 saveCurrentStepContent()
                 currentStep++
                 updateStepDisplay()
                 editPasoContenido.setText(stepsContent[currentStep] ?: "")
-            } else {
-                Toast.makeText(this, "Debe agregar un paso antes de continuar", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -137,7 +136,6 @@ class CrearTareaActivity : AppCompatActivity() {
                 mutableListOf()
             }
 
-            // Reemplazar la tarea existente si se está editando
             if (isEditing) {
                 val index = listaTareas.indexOfFirst { it.titulo == tarea.titulo }
                 if (index != -1) {
@@ -155,7 +153,7 @@ class CrearTareaActivity : AppCompatActivity() {
     }
 
     private fun showTaskCreatedMessage() {
-        val toast = Toast.makeText(this, "Tarea creada", Toast.LENGTH_LONG)
+        val toast = Toast.makeText(this, "Tarea guardada", Toast.LENGTH_LONG)
         val handler = Handler(Looper.getMainLooper())
         toast.show()
         handler.postDelayed({

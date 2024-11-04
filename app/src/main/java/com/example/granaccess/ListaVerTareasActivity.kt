@@ -2,16 +2,17 @@ package com.example.granaccess
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class VerTareasActivity : AppCompatActivity() {
+class ListaVerTareasActivity : AppCompatActivity() {
 
     private lateinit var listViewTareas: ListView
+    private lateinit var textTituloLista: TextView
     private var tareasList = mutableListOf<Tarea>()
     private val gson = Gson()
 
@@ -20,6 +21,10 @@ class VerTareasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ver_tareas)
 
         listViewTareas = findViewById(R.id.listViewTareas)
+        textTituloLista = findViewById(R.id.textTituloLista)
+
+        // Configurar el título
+        textTituloLista.text = "Ver Tareas"
 
         // Recuperar las tareas guardadas
         val sharedPrefs = getSharedPreferences("TareasPref", MODE_PRIVATE)
@@ -39,16 +44,6 @@ class VerTareasActivity : AppCompatActivity() {
             val intent = Intent(this, VerTareaActivity::class.java)
             intent.putExtra("tareaSeleccionada", gson.toJson(tareaSeleccionada))
             startActivity(intent)
-        }
-
-        // Acción al hacer una pulsación larga para modificar una tarea
-        listViewTareas.setOnItemLongClickListener { _, _, position, _ ->
-            val tareaSeleccionada = tareasList[position]
-            val intent = Intent(this, CrearTareaActivity::class.java)
-            intent.putExtra("tareaSeleccionada", gson.toJson(tareaSeleccionada))
-            intent.putExtra("modoEdicion", true) // Indica que es para modificar
-            startActivity(intent)
-            true
         }
     }
 }

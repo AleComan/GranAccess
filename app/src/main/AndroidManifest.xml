@@ -33,8 +33,18 @@
             android:theme="@style/Theme.GranAccess" />
 
         <activity
-            android:name=".VerTareasActivity"
+            android:name=".ListaModificarActivity"
+            android:label="Modificar Tareas"
+            android:theme="@style/Theme.GranAccess" />
+
+        <activity
+            android:name=".ListaVerTareasActivity"
             android:label="Ver Tareas"
+            android:theme="@style/Theme.GranAccess" />
+
+        <activity
+            android:name=".VerTareaActivity"
+            android:label="Ver Tarea"
             android:theme="@style/Theme.GranAccess" />
 
         <activity

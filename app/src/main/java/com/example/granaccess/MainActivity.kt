@@ -30,6 +30,12 @@ class MainActivity : ComponentActivity() {
                     },
                     onNavigateToGestionarTareas = {
                         startActivity(Intent(this, GestionTareasActivity::class.java))
+                    },
+                    onNavigateToNotificaciones = {
+                        startActivity(Intent(this, VentanaNotificacionesActivity::class.java))
+                    },
+                    onNavigateToCrearNotificacion = {
+                        startActivity(Intent(this, CrearNotificacionActivity::class.java))
                     }
                 )
             }
@@ -41,7 +47,9 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(
     onNavigateToComanda: () -> Unit,
     onNavigateToSeleccionarMaterial: () -> Unit,
-    onNavigateToGestionarTareas: () -> Unit
+    onNavigateToGestionarTareas: () -> Unit,
+    onNavigateToNotificaciones: () -> Unit,
+    onNavigateToCrearNotificacion: () -> Unit
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -66,6 +74,14 @@ fun MainScreen(
                 Button(onClick = onNavigateToGestionarTareas, modifier = Modifier.fillMaxWidth()) {
                     Text("Gestionar Tareas")
                 }
+
+                Button(onClick = onNavigateToNotificaciones, modifier = Modifier.fillMaxWidth()) {
+                    Text("Notificaciones")
+                }
+
+                Button(onClick = onNavigateToCrearNotificacion, modifier = Modifier.fillMaxWidth()) {
+                    Text("Crear Notificación")
+                }
             }
         }
     )
@@ -75,6 +91,6 @@ fun MainScreen(
 @Composable
 fun MainScreenPreview() {
     GranAccessTheme {
-        MainScreen({}, {}, {})
+        MainScreen({}, {}, {}, {}, {})
     }
 }

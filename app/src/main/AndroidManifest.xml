@@ -38,9 +38,27 @@
             android:theme="@style/Theme.GranAccess" />
 
         <activity
+            android:name=".CrearNotificacionActivity"
+            android:label="Crear Notificación"
+            android:theme="@style/Theme.GranAccess" />
+
+
+        <activity
             android:name=".ListaVerTareasActivity"
             android:label="Ver Tareas"
             android:theme="@style/Theme.GranAccess" />
+
+        <activity
+            android:name=".VentanaNotificacionesActivity"
+            android:label="Notificaciones"
+            android:theme="@style/Theme.GranAccess" />
+
+        <activity
+            android:name=".VentanaVerNotificacionActivity"
+            android:label="Ver Notificación"
+            android:theme="@style/Theme.GranAccess" />
+
+
 
         <activity
             android:name=".VerTareaActivity"

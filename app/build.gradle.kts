@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.granaccess"
+    namespace = "com.example.grana"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.granaccess"
+        applicationId = "com.example.grana"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -66,4 +66,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Dependencias de Jetpack Compose
+    implementation("androidx.compose.ui:ui:1.5.1")
+    implementation("androidx.compose.material3:material3:1.1.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")
+    implementation("androidx.activity:activity-compose:1.7.2")
+
+    // Dependencia de OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
+    // JSON handling con org.json
+    implementation("org.json:json:20210307")
 }

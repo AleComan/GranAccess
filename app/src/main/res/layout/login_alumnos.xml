@@ -1,90 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1C3C"
     android:padding="20dp">
 
-    <!-- Título de la pantalla -->
+    <!-- Texto de Login de Alumnos -->
+
     <TextView
-        android:id="@+id/loginTitleTextView"
+        android:id="@+id/loginTitleTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login de Alumnos"
+        android:layout_marginTop="50dp"
+        android:text="Login Alumnos"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/studentIdEditText"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botón para volver a la pantalla de inicio -->
+    <!-- Botón para volver a la vista principal -->
 
     <Button
-        android:id="@+id/studentBackToMain"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/BackToMain"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:background="@drawable/rounded_button"
         android:text="Volver"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTitleTextView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
 
-    <!-- Campo para introducir el usuario -->
-
-    <EditText
-        android:id="@+id/studentIdEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
-        android:backgroundTint="#FFFFFF"
-        android:hint="ID de Alumno"
-        android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#CCCCCC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginTitleTextView" />
-
-    <!-- Campo para introducir la contraseña -->
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#CCCCCC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/studentIdEditText" />
-
-    <!-- Botón para iniciar sesión -->
+    <!-- Botón para volver a la vista principal -->
 
     <Button
-        android:id="@+id/studentLoginButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:id="@+id/ToNormalLogin"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:background="@drawable/rounded_button"
-        android:text="Iniciar Sesión"
+        android:text="Profesores y Administradores"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
+
+    <ImageButton
+        android:id="@+id/imageMario"
+        android:src="@drawable/mario"
+        android:layout_width="120dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="MarioButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <ImageButton
+        android:id="@+id/imageLuigi"
+        android:src="@drawable/luigi"
+        android:layout_width="143dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="LuigiButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18"
+    />
+
+    <ImageButton
+        android:id="@+id/imagePeach"
+        android:src="@drawable/peach"
+        android:layout_width="120dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="PeachButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageMario"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageYoshi"
+        android:src="@drawable/yoshi"
+        android:layout_width="120dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="YoshiButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePeach"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageDaisy"
+        android:src="@drawable/daisy"
+        android:layout_width="120dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="DaisyButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLuigi"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageToad"
+        android:src="@drawable/toad"
+        android:layout_width="120dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="ToadButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageDaisy"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

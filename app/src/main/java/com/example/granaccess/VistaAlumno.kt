@@ -7,18 +7,18 @@ import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 
-class MainActivity : ComponentActivity() {
+class VistaAlumno : ComponentActivity(){
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        val loginButton = findViewById<Button>(R.id.loginButton)
-        // Configura el evento de clic en el botón
+        setContentView(R.layout.vista_alumno)
 
-        loginButton.setOnClickListener {
-            val intent = Intent(this, LoginAlumnos::class.java)
-            startActivity(intent)
+        val backButton = findViewById<Button>(R.id.backToMain)
+
+        backButton.setOnClickListener {
+            val intentBack = Intent(this, MainActivity::class.java)
+            startActivity(intentBack)
         }
     }
 }

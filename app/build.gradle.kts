@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
 }
 
 android {
@@ -40,7 +41,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "2.0.21"
     }
     packaging {
         resources {
@@ -50,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.material:material:1.10.0") // Usa la versión más reciente compatible con tu proyecto
+    implementation("com.google.code.gson:gson:2.8.8") // Añadido: dependencia de Gson
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

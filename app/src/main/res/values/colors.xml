@@ -10,4 +10,14 @@
 
     <color name="primary">#3F51B5</color>
     <color name="secondary">#2196F3</color>
+
+    <color name="purple_background">#D1C4E9</color> <!-- Color añadido -->
+    <color name="tu_color_de_fondo">#F3F4F6</color> <!-- Cambia a tu color de fondo preferido -->
+    <color name="tu_color_de_texto">#333333</color> <!-- Cambia a tu color de texto preferido -->
+    <color name="your_cancel_button_color">#D32F2F</color> <!-- Rojo, cambia si es necesario -->
+    <color name="your_confirm_button_color">#388E3C</color> <!-- Verde, cambia si es necesario -->
+
+    <!-- Nuevos colores añadidos -->
+    <color name="red">#D32F2F</color> <!-- Rojo -->
+    <color name="green">#388E3C</color> <!-- Verde -->
 </resources>

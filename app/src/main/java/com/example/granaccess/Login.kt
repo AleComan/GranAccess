@@ -14,10 +14,17 @@ class Login : ComponentActivity(){
         enableEdgeToEdge()
         setContentView(R.layout.login)
         val changeLogin = findViewById<Button>(R.id.toStudentLogin)
+        val login = findViewById<Button>(R.id.loginButton)
 
         changeLogin.setOnClickListener {
             val intent = Intent(this, LoginAlumnos::class.java)
             startActivity(intent)
         }
+
+        login.setOnClickListener {
+            val intent = Intent(this, MenuTareas::class.java)
+            startActivity(intent)
+        }
+
     }
 }

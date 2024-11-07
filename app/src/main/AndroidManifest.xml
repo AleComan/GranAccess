@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.granaccess"
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
@@ -15,77 +16,89 @@
 
         <activity android:name=".VistaAlumno"
             android:exported="false" />
+
         <activity android:name=".Login"
             android:exported="false" />
+
         <activity
             android:name=".LoginAlumnos"
             android:exported="false" />
 
-        <<activity
-        android:name=".SeleccionarMaterialActivity"
-        android:parentActivityName=".ComandaActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ComandaActivity" />
-    </activity>
+        <activity android:name=".MenuTareas"
+            android:exported="true" />
 
         <activity
             android:name=".ComandaActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GranAccess" />
+            android:label="Comanda de Materiales"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".SeleccionarMaterialActivity"
+            android:parentActivityName=".ComandaActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ComandaActivity" />
+        </activity>
 
         <activity
             android:name=".GestionTareasActivity"
             android:label="Gestionar Tareas"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".CrearTareaActivity"
             android:label="Crear Tarea"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".ListaModificarActivity"
             android:label="Modificar Tareas"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".CrearNotificacionActivity"
             android:label="Crear Notificación"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
 
         <activity
             android:name=".ListaVerTareasActivity"
             android:label="Ver Tareas"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".VentanaNotificacionesActivity"
             android:label="Notificaciones"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".VentanaVerNotificacionActivity"
             android:label="Ver Notificación"
-            android:theme="@style/Theme.GranAccess" />
-
-
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
             android:name=".VerTareaActivity"
             android:label="Ver Tarea"
-            android:theme="@style/Theme.GranAccess" />
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.GranAccess">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

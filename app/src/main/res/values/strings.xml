@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">GranAccess</string>
     <string name="select_material_prompt">Selecciona un material</string>
+    <string-array name="roles_array">
+        <item>admin</item>
+        <item>profesor</item>
+        <item>alumno</item>
+    </string-array>
 </resources>
+

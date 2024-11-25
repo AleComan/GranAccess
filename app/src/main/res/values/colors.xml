@@ -6,7 +6,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="softBlueBackground">#E3F2FD</color> <!-- Fondo azul claro pastel -->
+    <color name="softBlueButton">#90CAF9</color>      <!-- Azul más fuerte para botones -->
+    <color name="deepBlueText">#1565C0</color>       <!-- Azul oscuro para texto -->
 
     <color name="primary">#3F51B5</color>
     <color name="secondary">#2196F3</color>
@@ -16,6 +19,12 @@
     <color name="tu_color_de_texto">#333333</color> <!-- Cambia a tu color de texto preferido -->
     <color name="your_cancel_button_color">#D32F2F</color> <!-- Rojo, cambia si es necesario -->
     <color name="your_confirm_button_color">#388E3C</color> <!-- Verde, cambia si es necesario -->
+
+    <color name="backgroundColor">#F9F9F9</color>
+    <color name="primaryTextColor">#333333</color>
+    <color name="hintColor">#888888</color>
+    <color name="buttonColor">#6200EE</color>
+    <color name="white">#FFFFFF</color>
 
     <!-- Nuevos colores añadidos -->
     <color name="red">#D32F2F</color> <!-- Rojo -->

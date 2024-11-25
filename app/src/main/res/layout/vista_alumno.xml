@@ -23,7 +23,7 @@
         android:layout_width="238dp"
         android:layout_height="103dp"
         android:layout_marginTop="132dp"
-        android:text="Vista de Alumno en Desarollo..."
+        android:text="Vista en Desarollo..."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import com.example.granaccess.cuentas.SeleccionarUsuario
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("MissingInflatedId")
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
         // Configura el evento de clic en el botón
 
         loginButton.setOnClickListener {
-            val intent = Intent(this, LoginAlumnos::class.java)
+            val intent = Intent(this, SeleccionarUsuario::class.java)
             startActivity(intent)
         }
     }

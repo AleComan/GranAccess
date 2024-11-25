@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.granaccess" />
+                  <option name="mobileSdkAppId" value="1:712981648774:android:f391fd8818ffb666d18807" />
+                  <option name="projectId" value="granaccess-39711" />
+                  <option name="projectNumber" value="712981648774" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

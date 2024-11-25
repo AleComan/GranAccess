@@ -3,90 +3,173 @@
     package="com.example.granaccess"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logo_notext"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@drawable/logo_notext"
         android:supportsRtl="true"
         android:theme="@style/Theme.GranAccess"
         tools:targetApi="31">
 
-        <activity android:name=".VistaAlumno"
-            android:exported="false" />
+        <!-- CUENTAS -->
 
-        <activity android:name=".Login"
+        <activity
+            android:name=".cuentas.SeleccionarUsuario"
+            android:label="Seleccionar Usuario"
+            android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".LoginAlumnos"
+            android:name=".cuentas.LoginTexto"
+            android:label="Login Texto"
+            android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
-        <activity android:name=".MenuTareas"
-            android:exported="true" />
+        <activity
+            android:name=".cuentas.LoginImagen"
+            android:label="Login Texto"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
 
         <activity
-            android:name=".ComandaActivity"
+            android:name=".cuentas.RegistroAlumno"
+            android:label="Registro de Alumno"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.ConfigurarImagenes"
+            android:label="Configurar Imagenes"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.RegistroProfesor"
+            android:label="Registro de Alumno"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.VistaProfesor"
+            android:label="Vista Profesor"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.VistaAlumno"
+            android:label="Vista Alumno"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.VistaAdmin"
+            android:label="Vista Admin"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity android:name=".cuentas.GestionarCuentas"
+            android:label="Gestionar Cuentas"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.ImageAdapter"
+            android:label="ImageAdapter"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+
+        <activity
+            android:name=".cuentas.SubirImagenes"
+            android:label="ImageAdapter"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false" />
+
+        <activity
+            android:name=".cuentas.Usuario"
+            android:label="ImageAdapter"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+
+        <activity
+            android:name=".cuentas.UsuarioAdapter"
+            android:label="ImageAdapter"
+            android:theme="@style/Theme.GranAccess"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+
+        <!-- TAREAS -->
+
+        <activity
+            android:name=".tareas.ComandaActivity"
             android:label="Comanda de Materiales"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".SeleccionarMaterialActivity"
-            android:parentActivityName=".ComandaActivity"
+            android:name=".tareas.SeleccionarMaterialActivity"
+            android:parentActivityName=".tareas.ComandaActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ComandaActivity" />
+                android:value=".tareas.ComandaActivity" />
         </activity>
 
         <activity
-            android:name=".GestionTareasActivity"
+            android:name=".tareas.GestionTareasActivity"
             android:label="Gestionar Tareas"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".CrearTareaActivity"
+            android:name=".tareas.CrearTareaActivity"
             android:label="Crear Tarea"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".ListaModificarActivity"
+            android:name=".tareas.ListaModificarActivity"
             android:label="Modificar Tareas"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".CrearNotificacionActivity"
+            android:name=".tareas.CrearNotificacionActivity"
             android:label="Crear Notificación"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
 
         <activity
-            android:name=".ListaVerTareasActivity"
+            android:name=".tareas.ListaVerTareasActivity"
             android:label="Ver Tareas"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".VentanaNotificacionesActivity"
+            android:name=".tareas.VentanaNotificacionesActivity"
             android:label="Notificaciones"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".VentanaVerNotificacionActivity"
+            android:name=".tareas.VentanaVerNotificacionActivity"
             android:label="Ver Notificación"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
 
         <activity
-            android:name=".VerTareaActivity"
+            android:name=".tareas.VerTareaActivity"
             android:label="Ver Tarea"
             android:theme="@style/Theme.GranAccess"
             android:exported="false" />
@@ -100,5 +183,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 </manifest>

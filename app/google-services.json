@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "712981648774",
+    "project_id": "granaccess-39711",
+    "storage_bucket": "granaccess-39711.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712981648774:android:f391fd8818ffb666d18807",
+        "android_client_info": {
+          "package_name": "com.example.granaccess"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDghJEnNB20pjyragCtCdMLhEDFk4xjlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

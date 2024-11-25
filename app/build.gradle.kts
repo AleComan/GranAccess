@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -54,6 +55,19 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0") // Usa la versión más reciente compatible con tu proyecto
     implementation("com.google.code.gson:gson:2.8.8") // Añadido: dependencia de Gson
 
+    // DEPENDENCIAS PARA CONECTARSE AL SERVIDOR
+
+    // DEPENDENCIA PARA LA LISTA DE USUARIOS SCROLLABLE
+
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
+
+    // DEPENDENCIAS FIREBASE
+
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -66,6 +80,10 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

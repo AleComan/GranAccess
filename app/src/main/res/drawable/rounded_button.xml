@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Fondo del botón -->
-    <solid android:color="#8C8CCE" />
+    <solid android:color="@color/softBlueButton" />
 
     <!-- Bordes redondeados -->
-    <corners android:radius="40dp" />
+    <corners android:radius="30dp" />
 
     <!-- Opcional: Añadir padding para que el texto no esté tan cerca de los bordes -->
     <padding

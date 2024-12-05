@@ -8,7 +8,8 @@
     <color name="black">#FF000000</color>
 
     <color name="softBlueBackground">#E3F2FD</color> <!-- Fondo azul claro pastel -->
-    <color name="softBlueButton">#90CAF9</color>      <!-- Azul más fuerte para botones -->
+    <color name="softBlueButton">#7DBBEB</color>      <!-- Azul más fuerte para botones -->
+    <color name="blueBackButton">#84ACCC</color>
     <color name="deepBlueText">#1565C0</color>       <!-- Azul oscuro para texto -->
 
     <color name="primary">#3F51B5</color>
@@ -29,4 +30,5 @@
     <!-- Nuevos colores añadidos -->
     <color name="red">#D32F2F</color> <!-- Rojo -->
     <color name="green">#388E3C</color> <!-- Verde -->
+    <color name="green_completed">#96D79B</color>
 </resources>

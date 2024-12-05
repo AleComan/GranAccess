@@ -9,13 +9,25 @@
     android:background="@color/softBlueBackground">
 
 
-    <!-- Usuario -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar Alumno"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/deepBlueText"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
-        android:id="@+id/etUsuario"
+        android:id="@+id/etUsername"
         android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
         android:autofillHints="usuario"
         android:background="@drawable/rounded_edittext"
@@ -28,13 +40,12 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Contraseña -->
     <EditText
-        android:id="@+id/etContrasena"
+        android:id="@+id/etPassword"
         android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
@@ -53,51 +64,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@id/etUsuario" />
+        app:layout_constraintTop_toBottomOf="@id/etUsername" />
 
     <!-- Switch para preferencia de imagen -->
 
-    <Switch
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/albert_sans"
+        android:text="Preferencia de accesibilidad"
+        android:textColor="@color/deepBlueText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/swPrefImagen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.729" />
+
+    <Spinner
         android:id="@+id/swPrefImagen"
         android:layout_width="320dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_edittext"
+        android:entries="@array/imagen_preferencias"
         android:fontFamily="@font/albert_sans"
-        android:text="Preferencia de imágenes"
-        android:textColor="@color/deepBlueText"
-        android:textSize="20sp"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
-    <!-- Botón para configurar la secuencia -->
+    <ImageView
+        android:id="@+id/ivFotoPerfil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/border_background_blue"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_user"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swPrefImagen"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvFotoPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:text="Foto de Perfil"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivFotoPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnConfigurarImagenes"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/albert_sans"
-        android:text="Configurar Imágenes"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@id/swPrefImagen" />
-
-    <Button
-        android:id="@+id/btnRegistrarAlumno"
+        android:id="@+id/btnRegistrar"
         android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
@@ -121,7 +154,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_button_back"
         android:fontFamily="@font/albert_sans"
         android:text="Cancelar"
         android:textColor="@color/white"

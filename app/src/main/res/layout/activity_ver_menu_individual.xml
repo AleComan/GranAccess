@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textIdentificador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identificador: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textTipoMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Menú: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textPrimerPlato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Primer Plato: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textSegundoPlato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Segundo Plato: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textPostre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Postre: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textAsignaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Asignaciones: "
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
+</ScrollView>

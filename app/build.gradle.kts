@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -55,8 +56,6 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0") // Usa la versión más reciente compatible con tu proyecto
     implementation("com.google.code.gson:gson:2.8.8") // Añadido: dependencia de Gson
 
-    // DEPENDENCIAS PARA CONECTARSE AL SERVIDOR
-
     // DEPENDENCIA PARA LA LISTA DE USUARIOS SCROLLABLE
 
     implementation("com.github.bumptech.glide:glide:4.15.1")
@@ -66,6 +65,12 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    // DEPENDENCIAS GOOGLE PLAY
+    implementation(platform("com.google.firebase:firebase-bom:32.0.0"))
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
 
 
     implementation(libs.androidx.core.ktx)
@@ -84,6 +89,7 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.gridlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -91,4 +97,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("com.squareup.picasso:picasso:2.8")
 }

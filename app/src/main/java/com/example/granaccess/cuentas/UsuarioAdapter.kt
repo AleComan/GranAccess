@@ -1,7 +1,6 @@
 package com.example.granaccess.cuentas
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,13 +25,13 @@ class UsuarioAdapter(
             // Verifica si el atributo `icono` es nulo, vacío o no válido
             if (usuario.icono.isNullOrEmpty()) {
                 // Cargar placeholder si no hay imagen válida
-                imageView.setImageResource(R.drawable.placeholder)
+                imageView.setImageResource(R.drawable.placeholder_user)
             } else {
                 // Cargar la imagen desde la URL usando Glide
                 Glide.with(itemView.context)
                     .load(usuario.icono) // No necesitas Uri.parse si `icono` ya es una URL
-                    .placeholder(R.drawable.placeholder) // Imagen mientras carga
-                    .error(R.drawable.placeholder)       // Imagen en caso de error
+                    .placeholder(R.drawable.placeholder_user) // Imagen mientras carga
+                    .error(R.drawable.placeholder_user)       // Imagen en caso de error
                     .into(imageView)
             }
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Campo para ingresar el nombre del alumno -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/editNombreAlumno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Ingrese nombre del alumno"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text" />
+
+        <Button
+            android:id="@+id/btnAsignarAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asignar"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Texto del nombre del alumno asignado -->
+    <TextView
+        android:id="@+id/textNombreAlumno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asignando a: "
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Nombre del menú actual -->
+    <TextView
+        android:id="@+id/textNombreMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Menú"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Control de cantidad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnMenos"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/textCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:padding="16dp" />
+
+        <Button
+            android:id="@+id/btnMas"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Navegación entre menús -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnAnteriorMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Anterior Menú"
+            android:enabled="false"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnSiguienteMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Siguiente Menú"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Botón para confirmar selección -->
+    <Button
+        android:id="@+id/btnConfirmarSeleccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Selección"
+        android:background="@android:color/holo_green_light"
+        android:textColor="@android:color/white"
+        android:enabled="true" />
+</LinearLayout>

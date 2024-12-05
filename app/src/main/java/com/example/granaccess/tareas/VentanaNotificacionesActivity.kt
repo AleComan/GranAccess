@@ -6,64 +6,76 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.granaccess.R
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.google.firebase.firestore.FirebaseFirestore
 
 class VentanaNotificacionesActivity : AppCompatActivity() {
 
     private lateinit var listViewNotificaciones: ListView
-    private val gson = Gson()
-    private val notificacionesKey = "NOTIFICACIONES_KEY"
-    private var listaNotificaciones = mutableListOf<Notificacion>()
+    private lateinit var titulo: TextView
+    private val db = FirebaseFirestore.getInstance()
+    private val listaNotificaciones = mutableListOf<Notificacion>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ventana_notificaciones)
 
-        val titulo = findViewById<TextView>(R.id.textTitulo)
+        // Configurar título y ListView
+        titulo = findViewById(R.id.textTitulo)
         titulo.text = "Notificaciones"
-
         listViewNotificaciones = findViewById(R.id.listViewNotificaciones)
 
-        cargarNotificaciones()
-        mostrarNotificaciones()
+        // Cargar notificaciones desde Firebase
+        cargarNotificacionesDesdeFirebase()
     }
 
-    private fun cargarNotificaciones() {
-        val sharedPrefs = getSharedPreferences("NotificacionesPref", MODE_PRIVATE)
-        val json = sharedPrefs.getString(notificacionesKey, null)
-        val type = object : TypeToken<MutableList<Notificacion>>() {}.type
-        listaNotificaciones = if (json != null) {
-            gson.fromJson(json, type)
-        } else {
-            mutableListOf()
-        }
+    private fun cargarNotificacionesDesdeFirebase() {
+        db.collection("notificaciones")
+            .get()
+            .addOnSuccessListener { result ->
+                listaNotificaciones.clear()
+                for (document in result) {
+                    val id = document.id // Usar el ID del documento como identificador
+                    val asunto = document.getString("asunto") ?: "Sin Asunto"
+                    val descripcion = document.getString("descripcion") ?: "Sin Descripción"
+                    val leida = document.getBoolean("leida") ?: false // Leer como Boolean
+                    listaNotificaciones.add(Notificacion(id, asunto, descripcion, leida))
+                }
+                mostrarNotificaciones()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al cargar las notificaciones: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun mostrarNotificaciones() {
-        val adapter = object : ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaNotificaciones.map { it.asunto }) {
+        val adapter = object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_list_item_1,
+            listaNotificaciones.map { it.asunto }
+        ) {
             override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
                 val view = super.getView(position, convertView, parent) as TextView
                 val notificacion = listaNotificaciones[position]
+                view.text = notificacion.asunto
                 view.setTextColor(if (notificacion.leida) Color.GREEN else Color.RED)
                 return view
             }
         }
-        listViewNotificaciones.adapter = adapter
 
+        listViewNotificaciones.adapter = adapter
         listViewNotificaciones.setOnItemClickListener { _, _, position, _ ->
             val notificacionSeleccionada = listaNotificaciones[position]
             val intent = Intent(this, VentanaVerNotificacionActivity::class.java)
-            intent.putExtra("notificacionSeleccionada", gson.toJson(notificacionSeleccionada))
+            intent.putExtra("notificacionId", notificacionSeleccionada.id)
             startActivity(intent)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        cargarNotificaciones()
-        mostrarNotificaciones()
+        cargarNotificacionesDesdeFirebase()
     }
 }

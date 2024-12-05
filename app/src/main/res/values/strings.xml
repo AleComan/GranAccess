@@ -6,5 +6,12 @@
         <item>profesor</item>
         <item>alumno</item>
     </string-array>
+
+    <string-array name="imagen_preferencias">
+        <item>Texto</item>
+        <item>Imágenes</item>
+        <item>Imágenes y texto</item>
+        <item>Audio</item>
+    </string-array>
 </resources>
 

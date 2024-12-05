@@ -7,30 +7,24 @@
 
     <TextView
         android:id="@+id/textTituloTarea"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:text="Título de la Tarea"
+        android:textSize="18sp"
         android:paddingBottom="8dp" />
 
     <TextView
         android:id="@+id/textDescripcionTarea"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:text="Descripción de la Tarea"
+        android:textSize="16sp"
         android:paddingBottom="16dp" />
 
-    <TextView
-        android:id="@+id/textPasoContenido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingBottom="8dp" />
-
     <Button
-        android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnVerPasos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Volver"
-        android:layout_gravity="center_horizontal" />
+        android:text="Ver Pasos" />
+
 </LinearLayout>

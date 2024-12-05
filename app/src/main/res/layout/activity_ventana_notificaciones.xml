@@ -11,13 +11,12 @@
         android:layout_height="wrap_content"
         android:text="Notificaciones"
         android:textSize="24sp"
-        android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <ListView
         android:id="@+id/listViewNotificaciones"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp" />
 </LinearLayout>

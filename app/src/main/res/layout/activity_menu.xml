@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/purple_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título principal -->
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Menús"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp" />
+
+        <!-- Campo para el nombre del menú -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Menú"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/editNombreMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el nombre del menú"
+                android:background="@drawable/background_edittext"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Campo para el tipo de menú -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Menú"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+
+            <Spinner
+                android:id="@+id/spinnerTipoMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_spinner"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Campo para el primer plato -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Primer Plato"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/editPrimerPlato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el primer plato"
+                android:background="@drawable/background_edittext"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Campo para el segundo plato -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Segundo Plato"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/editSegundoPlato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el segundo plato"
+                android:background="@drawable/background_edittext"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Campo para el postre -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Postre"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/editPostre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el postre"
+                android:background="@drawable/background_edittext"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Botón para agregar el menú -->
+        <Button
+            android:id="@+id/btnAgregarMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Menú"
+            android:background="@color/green"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,58 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:gravity="center">
+
+    <!-- Título de la actividad -->
+    <TextView
+        android:id="@+id/selectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/deepBlueText"
+        android:text="Seleccionar alumnos"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Contenedor para la lista dinámica de alumnos -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/alumnosListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Botón para guardar la tarea -->
+    <Button
+        android:id="@+id/saveTaskButton"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Guardar Cambios" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_button_back"
+        android:fontFamily="@font/albert_sans"
+        android:text="Volver"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</LinearLayout>

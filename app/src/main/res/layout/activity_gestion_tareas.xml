@@ -2,25 +2,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="36dp"
+    android:gravity="center"
+    android:background="@color/softBlueBackground">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestionar Tareas"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/deepBlueText"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/btnCrearTarea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:text="Crear Tarea"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnModificarTareas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:text="Modificar Tareas"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnVerTareas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Tareas" />
+        android:layout_height="70dp"
+        android:text="Ver Tareas"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/rounded_button_back"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Volver" />
 </LinearLayout>

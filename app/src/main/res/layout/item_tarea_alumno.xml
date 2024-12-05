@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemTareaContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@drawable/tarea_pendiente"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="15dp">
+
+    <!-- Contenedor Izquierdo: Título y Descripción -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tareaTitulo"
+            android:textColor="@color/deepBlueText"
+            android:fontFamily="@font/albert_sans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextoTituloPrueba"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/tareaDescripcion"
+            android:text="TextoDescripciónPrueba"
+            android:fontFamily="@font/albert_sans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Contenedor Derecho: Estado -->
+    <TextView
+        android:id="@+id/tareaEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:text="Pendiente"
+        android:textColor="@color/deepBlueText"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.granaccess.tareas
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,9 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.granaccess.R
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.util.UUID
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CrearNotificacionActivity : AppCompatActivity() {
 
@@ -20,8 +17,7 @@ class CrearNotificacionActivity : AppCompatActivity() {
     private lateinit var btnCancelar: Button
     private lateinit var btnEnviarNotificacion: Button
 
-    private val notificacionesKey = "NOTIFICACIONES_KEY"
-    private val gson = Gson()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,46 +35,47 @@ class CrearNotificacionActivity : AppCompatActivity() {
         }
 
         btnEnviarNotificacion.setOnClickListener {
-            guardarNotificacion()
-            showNotificationSentMessage()
+            guardarNotificacionEnFirestore()
         }
     }
 
-    private fun guardarNotificacion() {
-        val asunto = editAsuntoNotificacion.text.toString()
-        val descripcion = editDescripcionNotificacion.text.toString()
+    private fun guardarNotificacionEnFirestore() {
+        val asunto = editAsuntoNotificacion.text.toString().trim()
+        val descripcion = editDescripcionNotificacion.text.toString().trim()
 
         if (asunto.isNotEmpty() && descripcion.isNotEmpty()) {
-            val id = UUID.randomUUID().toString()
-            val notificacion = Notificacion(id, asunto, descripcion)
-            val sharedPreferences = getSharedPreferences("NotificacionesPref", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
+            // Crear el objeto de notificación
+            val notificacion = mapOf(
+                "asunto" to asunto,
+                "descripcion" to descripcion,
+                "leida" to false // Por defecto, la notificación no está leída
+            )
 
-            val notificacionesJson = sharedPreferences.getString(notificacionesKey, null)
-            val type = object : TypeToken<MutableList<Notificacion>>() {}.type
-            val listaNotificaciones = if (notificacionesJson != null) {
-                gson.fromJson<MutableList<Notificacion>>(notificacionesJson, type)
-            } else {
-                mutableListOf()
-            }
-
-            // Añadir la nueva notificación a la lista
-            listaNotificaciones.add(notificacion)
-
-            editor.putString(notificacionesKey, gson.toJson(listaNotificaciones))
-            editor.apply()
+            // Guardar en la colección "notificaciones"
+            db.collection("notificaciones")
+                .add(notificacion)
+                .addOnSuccessListener {
+                    mostrarMensajeExito()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        "Error al guardar la notificación: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
         } else {
             Toast.makeText(this, "Debe completar todos los campos", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun showNotificationSentMessage() {
-        val toast = Toast.makeText(this, "Notificación enviada", Toast.LENGTH_LONG)
+    private fun mostrarMensajeExito() {
+        val toast = Toast.makeText(this, "Notificación enviada correctamente", Toast.LENGTH_LONG)
         val handler = Handler(Looper.getMainLooper())
         toast.show()
         handler.postDelayed({
             toast.cancel()
             finish()
-        }, 5000)
+        }, 3000)
     }
 }

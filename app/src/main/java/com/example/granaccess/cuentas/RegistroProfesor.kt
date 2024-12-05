@@ -16,6 +16,8 @@ class RegistroProfesor : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var storage: FirebaseStorage
+
     private lateinit var seleccionarImagenLauncher: ActivityResultLauncher<Intent>
     private var selectedImageUri: Uri? = null
 
@@ -25,10 +27,10 @@ class RegistroProfesor : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        storage = FirebaseStorage.getInstance()
 
         val etUsername = findViewById<EditText>(R.id.etUsername)
         val etPassword = findViewById<EditText>(R.id.etPassword)
-        val btnSeleccionarImagen = findViewById<Button>(R.id.btnSeleccionarImagen)
         val ivFotoPerfil = findViewById<ImageView>(R.id.ivFotoPerfil)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrarProfesor)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
@@ -44,7 +46,7 @@ class RegistroProfesor : AppCompatActivity() {
         }
 
         // Botón para seleccionar imagen
-        btnSeleccionarImagen.setOnClickListener {
+        ivFotoPerfil.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 type = "image/*"
             }
@@ -89,7 +91,7 @@ class RegistroProfesor : AppCompatActivity() {
 
     // Subir imagen a Firebase Storage
     private fun subirImagen(username: String, uri: Uri, onSuccess: (String) -> Unit) {
-        val storageRef = FirebaseStorage.getInstance().reference.child("usericon/icon_$username.png")
+        val storageRef = storage.reference.child("usuarios/profesores/$username/foto_$username.png")
         storageRef.putFile(uri)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener { url ->

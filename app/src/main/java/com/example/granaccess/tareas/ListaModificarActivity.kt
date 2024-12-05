@@ -2,50 +2,69 @@ package com.example.granaccess.tareas
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.granaccess.R
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ListaModificarActivity : AppCompatActivity() {
 
-    private lateinit var listViewTareas: ListView
-    private lateinit var textTituloLista: TextView
-    private var tareasList = mutableListOf<Tarea>()
-    private val gson = Gson()
+    private lateinit var recyclerViewTareas: RecyclerView
+    private lateinit var backButton: Button
+    private val db = FirebaseFirestore.getInstance()
+    private val tareasList = mutableListOf<TareaMostrar>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_tareas)
 
-        listViewTareas = findViewById(R.id.listViewTareas)
-        textTituloLista = findViewById(R.id.textTituloLista)
+        recyclerViewTareas = findViewById(R.id.recyclerViewTareas)
+        recyclerViewTareas.layoutManager = LinearLayoutManager(this)
+        backButton = findViewById(R.id.backButton)
 
-        // Configurar el título
-        textTituloLista.text = "Lista Modificar"
-
-        // Recuperar las tareas guardadas
-        val sharedPrefs = getSharedPreferences("TareasPref", MODE_PRIVATE)
-        val json = sharedPrefs.getString("TAREAS_KEY", null)
-        if (json != null) {
-            val type = object : TypeToken<MutableList<Tarea>>() {}.type
-            tareasList = gson.fromJson(json, type)
+        // Configurar el adaptador
+        val adapter = TareaAdapterModificar(tareasList) { tarea ->
+            irAModificarTarea(tarea)
         }
+        recyclerViewTareas.adapter = adapter
 
-        // Mostrar los títulos de las tareas en el ListView
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, tareasList.map { it.titulo })
-        listViewTareas.adapter = adapter
+        // Cargar tareas desde Firestore
+        cargarTareasDesdeFirestore(adapter)
 
-        // Acción al seleccionar una tarea para modificar
-        listViewTareas.setOnItemClickListener { _, _, position, _ ->
-            val tareaSeleccionada = tareasList[position]
-            val intent = Intent(this, CrearTareaActivity::class.java)
-            intent.putExtra("tareaSeleccionada", gson.toJson(tareaSeleccionada))
-            intent.putExtra("modoEdicion", true)
-            startActivity(intent)
+        backButton.setOnClickListener {
+            finish()
         }
+    }
+
+    private fun cargarTareasDesdeFirestore(adapter: TareaAdapterModificar) {
+        db.collection("tareas")
+            .get()
+            .addOnSuccessListener { result ->
+                tareasList.clear()
+                for (document in result) {
+                    val tareaID = document.id
+                    val titulo = document.getString("titulo") ?: "Sin título"
+                    val descripcion = document.getString("descripcion") ?: "Sin descripción"
+                    val asignados = document.get("asignados") as? Map<String, Boolean> ?: emptyMap()
+
+                    // Crear una instancia de TareaMostrar y añadirla a la lista
+                    tareasList.add(TareaMostrar(tareaID, titulo, descripcion, "", arrayListOf(), asignados))
+                }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al cargar tareas: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun irAModificarTarea(tarea: TareaMostrar) {
+        val intent = Intent(this, OpcionesModificarTarea::class.java)
+        intent.putExtra("tareaID", tarea.tareaID)
+        intent.putExtra("titulo", tarea.titulo)
+        intent.putExtra("descripcion", tarea.descripcion)
+        startActivity(intent)
     }
 }

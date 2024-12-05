@@ -1,14 +1,12 @@
 package com.example.granaccess.cuentas
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -21,157 +19,202 @@ class RegistroAlumno : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var storage: FirebaseStorage
+    private lateinit var seleccionarImagenLauncher: ActivityResultLauncher<Intent>
+    private var selectedImageUri: Uri? = null
+    private var preference: String = ""
+    private var imgAndText : Boolean = false
 
-    private var imagenesSeleccionadas= listOf<Uri>()
-    private var secuenciaSeleccionada = listOf<Int>()
-    private var isPrefImagen: Boolean = false
+    private var nothingSelected: Boolean = false
 
-    private lateinit var configurarImagenesLauncher: ActivityResultLauncher<Intent>
+    private lateinit var loadingDialog: AlertDialog
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registro_alumno)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        storage = FirebaseStorage.getInstance()
 
-        val etUsuario = findViewById<EditText>(R.id.etUsuario)
-        val etContrasena = findViewById<EditText>(R.id.etContrasena)
-        val swPrefImagen = findViewById<Switch>(R.id.swPrefImagen)
-        val btnConfigurarImagenes = findViewById<Button>(R.id.btnConfigurarImagenes)
-        val btnRegistrar = findViewById<Button>(R.id.btnRegistrarAlumno)
+        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val ivIcono = findViewById<ImageView>(R.id.ivFotoPerfil)
+        val switchImgPref = findViewById<Spinner>(R.id.swPrefImagen)
+        val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
 
-        // Configurar preferencia
-        swPrefImagen.setOnCheckedChangeListener { _, isChecked ->
-            isPrefImagen = isChecked
-            btnConfigurarImagenes.visibility = if (isChecked) View.VISIBLE else View.GONE
-        }
-
-        // Botón para ir a "Configurar Imágenes"
-        btnConfigurarImagenes.setOnClickListener {
-            val intent = Intent(this, ConfigurarImagenes::class.java)
-            configurarImagenesLauncher.launch(intent)
-        }
-
-        // Configurar el ActivityResultLauncher
-        configurarImagenesLauncher = registerForActivityResult(
+        // Registrar el launcher para seleccionar imagen
+        seleccionarImagenLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == RESULT_OK && result.data != null) {
-                val data = result.data!!
-
-                // Recuperar las imágenes seleccionadas
-                imagenesSeleccionadas = (data.getStringArrayListExtra("imagenesSeleccionadas") ?: emptyList()).map { Uri.parse(it)}
-
-                // Recuperar la secuencia seleccionada
-                secuenciaSeleccionada = data.getIntegerArrayListExtra("secuenciaSeleccionada") ?: emptyList()
-
-                print("Imagenes seleccionadas: $imagenesSeleccionadas\n Secuencia seleccionada: $secuenciaSeleccionada")
-
-                Toast.makeText(
-                    this,
-                    "Imágenes seleccionadas: $imagenesSeleccionadas\nSecuencia seleccionada: $secuenciaSeleccionada",
-                    Toast.LENGTH_SHORT
-                ).show()
+                selectedImageUri = result.data!!.data
+                ivIcono.setImageURI(selectedImageUri)
             }
         }
 
-        // Botón para registrar alumno
+        // Selección de imagen de perfil
+        ivIcono.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                type = "image/*"
+            }
+            seleccionarImagenLauncher.launch(intent)
+        }
+
+        // Selección de preferencia visual
+        nothingSelected = true
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.imagen_preferencias,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            switchImgPref.adapter = adapter
+        }
+
+        switchImgPref.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when (position){
+                    0 -> {
+                        preference = "text"
+                        nothingSelected = false
+                    }
+
+                    1 -> {
+                        preference = "image"
+                        nothingSelected = false
+                    }
+
+                    2 -> {
+                        preference = "imagetext"
+                        nothingSelected = false
+                    }
+
+                    3 -> {
+                        preference = "audio"
+                        nothingSelected = false
+                    }
+                }
+
+                if (preference == "image" || preference == "imagetext"){
+                    btnRegistrar.text = "Configurar Imágenes"
+                }
+                else {
+                    btnRegistrar.text = "Registrar"
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                nothingSelected = true
+            }
+        }
+
+
+        // Acción al presionar el botón de registrar
         btnRegistrar.setOnClickListener {
+            val username = etUsername.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
-            val username = etUsuario.text.toString().trim()
-            val password = etContrasena.text.toString().trim()
-
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty() || password.isEmpty() || selectedImageUri == null) {
+                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (isPrefImagen && (imagenesSeleccionadas.isEmpty() || imagenesSeleccionadas.size < 6 || secuenciaSeleccionada.size != 2)) {
-                Toast.makeText(this, "Configura las imágenes y la secuencia correctamente", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            if (!nothingSelected) {
+                if (btnRegistrar.text == "Configurar Imágenes") {
+                    // Ir a la nueva vista para configurar imágenes
+                    val intent = Intent(this, ConfigurarImagenes::class.java).apply {
+                        putExtra("username", username)
+                        putExtra("password", password)
+                        putExtra("iconUri", selectedImageUri.toString())
+                        putExtra("imgAndText", imgAndText)
+                    }
+                    startActivity(intent)
+                } else {
+                    // Registrar directamente al alumno en Firebase
+                    if (selectedImageUri != null) {
+                        registrarAlumno(username, password, selectedImageUri!!)
+                    } else {
+                        Toast.makeText(this, "Selecciona una imagen de perfil", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
+            else {
+                Toast.makeText(this, "Selecciona un preferencia de accesibilidad", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-            registrarAlumno(username, password)
+        // Cancelar la operación
+        btnCancelar.setOnClickListener {
+            finish()
         }
     }
 
-    private fun registrarAlumno(username: String, password: String) {
-        // Crear usuario en Firebase Authentication
-        auth.createUserWithEmailAndPassword("$username@example.com", password)
-            .addOnSuccessListener { authResult ->
-                val userId = authResult.user?.uid ?: return@addOnSuccessListener
-
-                if (isPrefImagen) {
-                    // Subir imágenes al Storage y guardar datos en Firestore
-                    subirImagenesYGuardarDatos(username, userId)
-                } else {
-                    // Guardar directamente los datos en Firestore
-                    guardarUsuarioEnFirestore(
-                        userId, username, password, isPrefImagen, listOf(), listOf()
-                    )
+    // Método para registrar un alumno en Firebase
+    private fun registrarAlumno(username: String, password: String, imageUri: Uri) {
+        auth.createUserWithEmailAndPassword("$username@domain.com", password)
+            .addOnSuccessListener {
+                val userId = auth.currentUser?.uid ?: return@addOnSuccessListener
+                subirImagenPerfil(username, imageUri) { imageUrl ->
+                    guardarAlumnoEnFirestore(userId, username, imageUrl)
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al registrar usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al registrar: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
-    private fun subirImagenesYGuardarDatos(username: String, userId: String) {
-        val storageRef = storage.reference.child("users/$username")
-        val imageUrls = mutableListOf<String>()
-
-        imagenesSeleccionadas.forEachIndexed { index, uri ->
-            val imageRef = storageRef.child("image_${index + 1}.jpg")
-            imageRef.putFile(uri)
-                .continueWithTask { task ->
-                    if (!task.isSuccessful) {
-                        task.exception?.let { throw it }
-                    }
-                    imageRef.downloadUrl
+    // Subir imagen de perfil al Firebase Storage
+    private fun subirImagenPerfil(username: String, uri: Uri, onSuccess: (String) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference.child("usuarios/alumnos/$username/foto_$username.png")
+        storageRef.putFile(uri)
+            .addOnSuccessListener {
+                storageRef.downloadUrl.addOnSuccessListener { url ->
+                    onSuccess(url.toString())
                 }
-                .addOnSuccessListener { downloadUrl ->
-                    imageUrls.add(downloadUrl.toString())
-
-                    if (imageUrls.size == imagenesSeleccionadas.size) {
-                        // Cuando todas las imágenes se hayan subido
-                        guardarUsuarioEnFirestore(userId, username, "", isPrefImagen, imageUrls, secuenciaSeleccionada)
-                    }
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error al subir imagen ${index + 1}: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
-        }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al subir imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    private fun guardarUsuarioEnFirestore(
-        userId: String,
-        username: String,
-        password: String,
-        isPrefImagen: Boolean,
-        imageUrls: List<String>,
-        secuencia: List<Int>
-    ) {
-        val userData = mutableMapOf<String, Any>(
+    // Guardar datos del alumno en Firestore
+    private fun guardarAlumnoEnFirestore(userId: String, username: String, imageUrl: String) {
+        val alumno = mapOf(
             "username" to username,
-            "isPrefImagen" to isPrefImagen
+            "preferencia" to preference,
+            "role" to "alumno",
+            "icono" to imageUrl
         )
 
-        if (isPrefImagen) {
-            userData["imagenes"] = imageUrls
-            userData["secuencia"] = secuencia
-        }
-
-        db.collection("usuarios").document(userId).set(userData)
+        db.collection("usuarios").document(userId).set(alumno)
             .addOnSuccessListener {
-                Toast.makeText(this, "Alumno registrado con éxito", Toast.LENGTH_SHORT).show()
+                hideLoadingDialog()
+                Toast.makeText(this, "Alumno registrado correctamente", Toast.LENGTH_SHORT).show()
                 finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al guardar en Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al guardar datos: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+    private fun showLoadingDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_loading, null)
+
+        loadingDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false) // Evita que el usuario lo cierre manualmente
+            .create()
+
+        loadingDialog.show()
+    }
+
+    private fun hideLoadingDialog() {
+        if (::loadingDialog.isInitialized && loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
+    }
 }
+

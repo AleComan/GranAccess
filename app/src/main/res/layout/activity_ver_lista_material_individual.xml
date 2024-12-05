@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Información del alumno asignado -->
+    <TextView
+        android:id="@+id/textAlumnoAsignado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alumno Asignado: No asignado"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ListView para mostrar los materiales -->
+    <ListView
+        android:id="@+id/listViewMateriales"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+    <!-- Botón para asignar alumno -->
+    <Button
+        android:id="@+id/btnAsignarAlumno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asignar Alumno"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

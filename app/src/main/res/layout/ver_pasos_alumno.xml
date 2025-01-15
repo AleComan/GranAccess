@@ -1,0 +1,108 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/softBlueBackground"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="36dp">
+
+    <!-- Número del paso -->
+    <TextView
+        android:id="@+id/numeroPaso"
+        android:textColor="@color/deepBlueText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/albert_sans"
+        android:text="Paso 1"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <!-- Descripción del paso -->
+    <TextView
+        android:id="@+id/descripcionPaso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/albert_sans"
+        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:text="Descripción del paso" />
+
+    <!-- Imagen del paso -->
+    <ImageView
+        android:id="@+id/imagenPaso"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/border_background_blue"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder" />
+
+    <!-- Botones de navegación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <!-- Botón para el paso anterior -->
+        <Button
+            android:id="@+id/btnAnteriorPaso"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/albert_sans"
+            android:textColor="@color/softBlueBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Anterior Paso"
+            android:visibility="gone" />
+
+        <!-- Espaciador -->
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <!-- Botón para el siguiente paso -->
+        <Button
+            android:id="@+id/btnSiguientePaso"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/albert_sans"
+            android:textColor="@color/softBlueBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Siguiente Paso" />
+    </LinearLayout>
+
+    <!-- Botón para marcar tarea como completada -->
+    <Button
+        android:id="@+id/btnMarcarCompletada"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button_green"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Marcar Completada"
+        android:visibility="gone" />
+
+    <!-- Botón para volver -->
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rounded_button_back"
+        android:fontFamily="@font/albert_sans"
+        android:text="Volver"
+        android:textColor="@color/softBlueBackground"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</LinearLayout>

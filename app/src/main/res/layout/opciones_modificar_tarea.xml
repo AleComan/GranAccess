@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@color/softBlueBackground">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="25dp"
+        android:text="Seleccionar modificación"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/deepBlueText"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <!-- Botón para Modificar Información -->
+    <Button
+        android:id="@+id/btnModificarInformacion"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="25dp"
+        android:text="Modificar Información"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white" />
+
+    <!-- Botón para Cambiar Orden Pasos -->
+    <Button
+        android:id="@+id/btnCambiarOrdenPasos"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="25dp"
+        android:text="Cambiar Orden Pasos"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white" />
+
+    <!-- Botón para Volver -->
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:text="Volver"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_button_back"
+        android:textColor="@color/white" />
+
+</LinearLayout>

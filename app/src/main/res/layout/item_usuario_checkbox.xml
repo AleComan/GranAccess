@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="36dp">
+
+    <!-- Imagen de perfil del alumno -->
+    <ImageView
+        android:id="@+id/alumnoIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/placeholder_user"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop" />
+
+    <!-- Nombre de usuario del alumno -->
+    <TextView
+        android:id="@+id/alumnoUsername"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:fontFamily="@font/albert_sans"
+        android:text="Username"
+        android:textSize="16sp" />
+
+    <!-- CheckBox para seleccionar al alumno -->
+    <CheckBox
+        android:id="@+id/alumnoCheckBox"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+</LinearLayout>

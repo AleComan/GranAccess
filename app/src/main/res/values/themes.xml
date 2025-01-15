@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.GranAccess" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.GranAccess" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/softBlueBackground</item>
+        <item name="colorPrimaryDark">@color/softBlueButton</item>
+        <item name="colorAccent">@color/deepBlueText</item>
+    </style>
 </resources>
+

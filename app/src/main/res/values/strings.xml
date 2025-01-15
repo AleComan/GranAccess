@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GranAccess</string>
+    <string name="select_material_prompt">Selecciona un material</string>
+    <string-array name="roles_array">
+        <item>admin</item>
+        <item>profesor</item>
+        <item>alumno</item>
+    </string-array>
+
+    <string-array name="imagen_preferencias">
+        <item>Texto</item>
+        <item>Imágenes</item>
+        <item>Imágenes y texto</item>
+        <item>Audio</item>
+    </string-array>
 </resources>
+

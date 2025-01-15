@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/textTituloLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista de Tareas"
+        android:fontFamily="@font/albert_sans"
+        android:textColor="@color/deepBlueText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp" />
+
+    <!-- RecyclerView para mostrar tareas dinámicas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTareas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="0dp"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_button_back"
+        android:fontFamily="@font/albert_sans"
+        android:textStyle="bold"
+        android:text="Volver"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

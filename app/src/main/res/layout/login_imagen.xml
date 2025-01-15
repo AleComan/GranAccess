@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/softBlueBackground">
+
+    <TextView
+        android:id="@+id/tvLoginImagenTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Selecciona tu Secuencia"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSaludo" />
+
+    <TextView
+        android:id="@+id/tvSaludo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="¡Bienvenid@!"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/glIzquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:columnCount="1"
+        android:rowCount="3"
+        app:layout_constraintEnd_toStartOf="@+id/glDerecha"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginImagenTitulo">
+
+        <ImageView
+            android:id="@+id/ivImagen1"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+
+        <ImageView
+            android:id="@+id/ivImagen3"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+
+        <ImageView
+            android:id="@+id/ivImagen5"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+    </GridLayout>
+
+
+    <GridLayout
+        android:id="@+id/glDerecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:columnCount="1"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/glIzquierda"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginImagenTitulo">
+
+        <ImageView
+            android:id="@+id/ivImagen2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+
+        <ImageView
+            android:id="@+id/ivImagen4"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+
+        <ImageView
+            android:id="@+id/ivImagen6"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_background_blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_user" />
+    </GridLayout>
+
+    <ImageView
+        android:id="@+id/ivBackArrow"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

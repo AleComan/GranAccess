@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="36dp"
+    android:gravity="center"
+    android:background="@color/softBlueBackground">
+
+    <!-- Título de la pantalla -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar Tarea"
+        android:textColor="@color/deepBlueText"
+        android:fontFamily="@font/albert_sans"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
+
+    <!-- Campo para el título de la tarea -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título de la Tarea"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTituloTarea"
+        android:layout_width="match_parent"
+        android:hint="Escribe el título de la tarea"
+        android:layout_height="50dp"
+        android:fontFamily="@font/albert_sans"
+        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:textSize="16sp" />
+
+    <!-- Campo para la descripción de la tarea -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción de la Tarea"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"
+        android:paddingTop="16dp" />
+
+    <EditText
+        android:id="@+id/editDescripcionTarea"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Escribe la descripción de la tarea"
+        android:fontFamily="@font/albert_sans"
+        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvFotoPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Foto de la Tarea"
+        android:textSize="16sp"
+        android:layout_marginTop="30dp" />
+
+    <!-- Vista previa de la imagen -->
+    <ImageView
+        android:id="@+id/ivTarea"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/border_background_blue"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder"
+        android:layout_marginTop="0dp" />
+
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rounded_button_back"
+            android:fontFamily="@font/albert_sans"
+            android:textColor="@color/softBlueBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            android:text="Volver"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnPasos"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/albert_sans"
+            android:textColor="@color/softBlueBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Modificar Pasos"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>

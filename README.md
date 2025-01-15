@@ -12,7 +12,7 @@ Funciones del `administrador` (sólo hay un usuario administrador):
 Funciones del `profesor` (puede haber más de uno):
 - Pedir materiales.
 
-Funciones del `alumno`:
+Funciones de los `alumnos`:
 - Completar tareas genéricas.
 - Completar tareas del tipo "Pedir Material".
 - Pedir comandas del comedor (indicar cuántos menús de cada tipo se desean).

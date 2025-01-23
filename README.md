@@ -5,13 +5,21 @@
 ## Tabla de Contenidos
 
 - [Descripción General](#descripción-general)
+  
 - [Funcionalidades](#funcionalidades)
+  
   - [Administrador](#administrador)
+    
   - [Profesor](#profesor)
+    
   - [Alumno](#alumno)
+    
 - [Tecnología](#tecnología)
+  
 - [Requisitos para Configuración](#requisitos-para-configuración)
+  
 - [Instalación](#instalación)
+  
 - [Autor](#autor)
 
 ---
@@ -55,7 +63,7 @@ Para probar esta aplicación, es necesario configurar un entorno de Firebase. Si
 
 1. Descarga o clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/granaccess.git```
+   git clone https://github.com/tu-usuario/granaccess.git
 
 2. Abre el proyecto en Android Studio.
    

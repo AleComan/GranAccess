@@ -1,22 +1,69 @@
-## GranAccess
+# GranAccess
 
-Aplicación desarrollada para la asignatura `Dirección y Gestión de Proyectos` de la `Universidad de Granada`. Curso 2024 / 2025
+**GranAccess** es una aplicación desarrollada como parte de la asignatura **Dirección y Gestión de Proyectos** en la **Universidad de Granada** durante el curso académico 2024/2025. El objetivo principal de la aplicación es proporcionar un gestor de tareas accesible para un colegio pequeño, con especial atención a las necesidades de accesibilidad de los alumnos.
 
-Simple gestor de tareas para un colegio pequeño, que cuenta con soporte para usuarios como Alumnos, Profesores y un administrador por defecto. Especializado en ofrecer una interfaz accesible para alumnos con preferencias visuales específicas, como mostrar contenidos solamente en formato de texto, imagen y audio.
+## Tabla de Contenidos
 
-Funciones del `administrador` (sólo hay un usuario administrador):
-- Crear usuarios de alumno y profesores.
-- Crear y modificar tareas, reasignando los alumnos a los que van dirigidas y posibilidad de modificar el orden de los pasos de las tareas.
-- Crear menús del comedor.
+- [Descripción General](#descripción-general)
+- [Funcionalidades](#funcionalidades)
+  - [Administrador](#administrador)
+  - [Profesor](#profesor)
+  - [Alumno](#alumno)
+- [Tecnología](#tecnología)
+- [Requisitos para Configuración](#requisitos-para-configuración)
+- [Instalación](#instalación)
+- [Autor](#autor)
 
-Funciones del `profesor` (puede haber más de uno):
-- Pedir materiales.
+---
 
-Funciones de los `alumnos`:
-- Completar tareas genéricas.
-- Completar tareas del tipo "Pedir Material".
-- Pedir comandas del comedor (indicar cuántos menús de cada tipo se desean).
+## Descripción General
 
-Esta aplicación está diseñada para funcionar con `Firebase`. En fechas futuras a la finalización del primer cuatrimestre del curso mencionado mi base de datos Firebase no estará operativa. 
+**GranAccess** está diseñada para facilitar la gestión y realización de tareas dentro de un entorno educativo. La aplicación admite diferentes tipos de usuarios (alumnos, profesores y administrador), y se centra en ofrecer una interfaz accesible adaptada a las preferencias visuales de los alumnos, permitiendo el uso exclusivo de texto, imágenes y audio para interactuar con los contenidos.
 
-Toda personas que desee probar la aplicación deberá tener activa una base de datos en Firebase con el plan `Blaze` (prepago), añadir la aplicación a la base de datos siguiendo el tutorial proporcionado por Firebase y crear una colección `usuarios` con un documento que tenga un campo `rol` con valor `admin`.
+## Funcionalidades
+
+### Administrador
+El administrador tiene un rol central y es el único usuario con acceso completo a todas las funciones de la aplicación. Sus responsabilidades incluyen:
+- **Gestión de usuarios**: Crear y gestionar cuentas de alumnos y profesores.
+- **Gestión de tareas**: Crear, modificar y asignar tareas a alumnos, además de establecer el orden de los pasos en las tareas.
+- **Gestión del comedor**: Crear menús para el comedor escolar.
+
+### Profesor
+Los profesores pueden:
+- **Solicitar materiales**: Enviar peticiones de materiales necesarios para sus clases.
+
+### Alumno
+Los alumnos tienen acceso a las siguientes funciones:
+- **Realización de tareas**: Completar tareas asignadas, incluyendo tareas genéricas y tareas específicas como solicitudes de materiales.
+- **Gestión del comedor**: Realizar comandas, especificando la cantidad de menús deseados por tipo.
+
+## Tecnología
+
+La aplicación está desarrollada en **Android Studio** y utiliza **Firebase** como base de datos en la nube. Se recomienda utilizar el plan **Blaze** (prepago) de Firebase para el correcto funcionamiento de las funcionalidades de backend.
+
+## Requisitos para Configuración
+
+Para probar esta aplicación, es necesario configurar un entorno de Firebase. Sigue los pasos a continuación:
+
+1. Configura una base de datos activa en **Firebase** con el plan **Blaze**.
+2. Integra la aplicación con tu base de datos de Firebase siguiendo la [documentación oficial de Firebase](https://firebase.google.com/docs).
+3. Crea una colección `usuarios` en tu base de datos y añade un documento con un campo `rol` cuyo valor sea `admin`. Este será el usuario administrador predeterminado.
+
+**Nota:** La base de datos Firebase utilizada para el desarrollo estará operativa únicamente hasta la finalización del primer cuatrimestre del curso 2024/2025. Posteriormente, los usuarios interesados deberán configurar su propia instancia de Firebase para ejecutar la aplicación.
+
+## Instalación
+
+1. Descarga o clona este repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/granaccess.git```
+
+2. Abre el proyecto en Android Studio.
+   
+3. Configura Firebase en el proyecto como se describe en la sección anterior.
+   
+4. Compila y ejecuta la aplicación en un dispositivo Android o emulador compatible.
+
+## Autor
+Alejandro Coman Venceslá
+Estudiante de Ingeniería Informática y Administración y Dirección de Empresas
+Universidad de Granada

@@ -72,6 +72,6 @@ Para probar esta aplicación, es necesario configurar un entorno de Firebase. Si
 4. Compila y ejecuta la aplicación en un dispositivo Android o emulador compatible.
 
 ## Autor
-Alejandro Coman Venceslá
-Estudiante de Ingeniería Informática y Administración y Dirección de Empresas
+Alejandro Coman Venceslá.
+Estudiante de Ingeniería Informática y Administración y Dirección de Empresas.
 Universidad de Granada

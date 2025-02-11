@@ -73,9 +73,13 @@ Para probar esta aplicación, es necesario configurar un entorno de Firebase. Si
 
 ## Autores
 Alejandro Coman Venceslá
+
 Jose Antonio Fernandez Aranda
+
 Jesús Reyes de Toro
+
 Ignacio Rojas Valenzuela
+
 
 Estudiantes de Ingeniería Informática y Administración y Dirección de Empresas.
 Universidad de Granada
